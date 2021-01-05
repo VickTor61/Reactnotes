@@ -1,0 +1,6 @@
+.form__label {
+    text-transform: uppercase;
+    color: white;
+    font-weight: 500;
+    margin-bottom: .5rem;
+}

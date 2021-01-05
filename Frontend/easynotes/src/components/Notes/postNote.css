@@ -1,0 +1,29 @@
+textarea {
+  height: 7rem;
+  overflow: hidden;
+  width: 36rem;
+  border: none;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  padding-left: 2rem;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.3rem;
+  font-weight: 500;
+  overflow: scroll;
+}
+textarea::placeholder {
+  text-align: center;
+
+  text-transform: uppercase;
+  font-family: sans-serif;
+}
+textarea:focus {
+  outline: none;
+}
+*:focus {
+  outline: 0;
+}
+textarea::-webkit-scrollbar {
+  display: none;
+}

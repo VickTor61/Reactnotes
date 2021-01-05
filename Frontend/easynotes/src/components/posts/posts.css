@@ -1,0 +1,38 @@
+header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+ul {
+  list-style-type: none;
+  text-align: center;
+  background-color: rgba(143, 38, 94, 0.856);
+  margin: 0;
+
+  height: 4rem;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ul li {
+  margin: 0 1rem;
+  display: inline-block;
+}
+
+ul li a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+ul li a:hover,
+ul li a:active
+{
+  cursor: pointer;
+  color: rgba(211, 207, 207, 0.774);
+  transition: all 0.2s ease;
+}
+
+ 

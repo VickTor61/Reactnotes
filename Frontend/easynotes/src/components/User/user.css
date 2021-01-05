@@ -1,0 +1,75 @@
+.paragraph {
+  margin: 3rem 2rem 0 0;
+  background-color: rgba(251, 249, 252, 0.973);
+
+  width: 18rem;
+  height: 6.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #413c3c;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+}
+.Users {
+  top: 4rem;
+  position: relative;
+}
+
+.user__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem 3rem;
+}
+.user__names {
+  text-transform: uppercase;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 85%;
+}
+.user__btn {
+  outline: none;
+  color: red;
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.7s ease-in-out;
+    background-color: rgba(143, 38, 94, 0.856);
+     padding: 0.5rem 0.7rem;
+     color: #ffffff;
+      border-radius: 5px;
+}
+.user__btn:hover {
+  cursor: pointer;
+  background-color: rgba(94, 14, 56, 0.856);
+  
+ 
+ 
+}
+.user__btn:focus {
+  outline: none;
+}
+
+.home__link {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  height: 2rem;
+  width: 2rem;
+  align-content: center;
+  justify-content: center;
+  border-radius: 100px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+  background-color: whitesmoke;
+  transition: all 0.7s ease-in-out;
+}
+.home__link:hover {
+  color: #ffffff;
+  background-color: rgba(211, 207, 207, 0.774);
+  cursor: pointer;
+}
+.MuiSvgIcon-root {
+  font-size: 2rem !important;
+}
