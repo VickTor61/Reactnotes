@@ -11,31 +11,30 @@ function SinglePost(props) {
     isLoaded: null
   });
 
-  useEffect(() => {
-    const source = Axios.CancelToken.source();
+  const source = Axios.CancelToken.source();
 
-    async function fetchData() {
-      try {
-        await Axios.get("/api" + props.match.params.id, {
-          cancelToken: source.token
-        }).then(response => {
-          setSinglePost({
-            loading: true,
-            isLoaded: response.data
-          });
+  async function fetchData() {
+    try {
+      await Axios.get("/api/notes/" + props.match.params.userId, {
+        cancelToken: source.token
+      }).then(response => {
+        console.log(response);
+        setSinglePost({
+          loading: true,
+          isLoaded: response.data
         });
-      } catch (error) {
-        if (Axios.isCancel(error)) {
-        } else {
-          throw error;
-        }
+      });
+    } catch (error) {
+      if (Axios.isCancel(error)) {
+      } else {
+        throw error;
       }
     }
+  }
+
+  useEffect(() => {
     fetchData();
-    return () => {
-      source.cancel();
-    };
-  });
+  }, []);
 
   if (singlePost.loading === false) {
     return (
@@ -54,7 +53,7 @@ function SinglePost(props) {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to={"/users/" + singlePost.isLoaded._id + "/notes"}>
+              <Link to={"/users/" + props.match.params.userId + "/notes"}>
                 Create Note
               </Link>
             </li>

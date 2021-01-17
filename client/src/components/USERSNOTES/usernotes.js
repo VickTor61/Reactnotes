@@ -10,11 +10,12 @@ function DisplayUserNotes() {
   const [displayAllUserNotes, setAllUserNotes] = useState([]);
 
   useEffect(() => {
+    console.log(History);
     const source = Axios.CancelToken.source();
 
     async function fetchData() {
       try {
-        await Axios.get(History.location.pathname + "/api/notes", {
+        await Axios.get("/api/" + History.location.pathname + "/notes", {
           cancelToken: source.token
         }).then(response => {
           setAllUserNotes(response.data);
@@ -30,7 +31,7 @@ function DisplayUserNotes() {
     return () => {
       source.cancel();
     };
-  });
+  }, []);
 
   return (
     <div className="Notes__container">
