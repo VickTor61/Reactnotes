@@ -5,15 +5,13 @@ import Display from "./components/display/Display";
 
 import { BrowserRouter } from "react-router-dom";
 
-
-
-axios.defaults.baseURL = "https://calm-harbor-66506.herokuapp.com/";
+// axios.defaults.baseURL = "https://calm-harbor-66506.herokuapp.com/";
 
 function App() {
-  return ( 
+  return (
     <BrowserRouter>
       <div className="App">
-       <Display />
+        <Display />
       </div>
     </BrowserRouter>
   );
