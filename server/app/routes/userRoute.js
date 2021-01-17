@@ -1,18 +1,17 @@
-module.exports = (app) => {
+module.exports = app => {
   const users = require("../controller/userController");
 
-  app.get("/", users.findAll);
+  app.get("/api/users", users.findAll);
 
- 
-  app.post("/users", users.create);
+  app.post("/api/users", users.create);
 
-  app.get("/users/:userId", users.findOne);
+  app.get("/api/users/:userId", users.findOne);
 
-  app.put("/users/:userId", users.updateOne);
+  app.put("/api/users/:userId", users.updateOne);
 
-  app.patch("/users/:userId", users.updateOneUser);
+  app.patch("/api/users/:userId", users.updateOneUser);
 
-  app.delete("/users/:userId", users.deleteUser);
+  app.delete("/api/users/:userId", users.deleteUser);
 
-  app.delete("/users", users.deleteAllUser)
+  app.delete("/api/users", users.deleteAllUser);
 };

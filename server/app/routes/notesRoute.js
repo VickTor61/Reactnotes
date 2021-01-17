@@ -1,19 +1,19 @@
-module.exports = (app) => {
+module.exports = app => {
   const Notes = require("../controller/NotesController");
 
-  app.get("/notes", Notes.findAll);
+  app.get("/api/notes", Notes.findAll);
 
-  app.get("/notes/:NoteName", Notes.findNote);
+  app.get("/api/notes/:NoteName", Notes.findNote);
 
-  app.get("/users/:noteId/edit", Notes.getASpecificNote);
+  app.get("/api/users/:noteId/edit", Notes.getASpecificNote);
 
-  app.post("/users/:userId/notes", Notes.createUsersNote);
+  app.post("/api/users/:userId/notes", Notes.createUsersNote);
 
-  app.get("/users/:user_id/notes", Notes.getUsersNote);
+  app.get("/api/users/:user_id/notes", Notes.getUsersNote);
 
-  app.patch("/users/:noteId/edit", Notes.updateOneNote);
+  app.patch("/api/users/:noteId/edit", Notes.updateOneNote);
 
-  app.delete("/users/:userId/:noteId", Notes.deleteANote);
+  app.delete("/api/users/:userId/:noteId", Notes.deleteANote);
 
-  app.delete("/notes", Notes.deleteAllNotes);
+  app.delete("/api/notes", Notes.deleteAllNotes);
 };
