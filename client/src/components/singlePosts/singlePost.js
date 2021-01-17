@@ -15,7 +15,7 @@ function SinglePost(props) {
 
   async function fetchData() {
     try {
-      await Axios.get("/api/notes/" + props.match.params.userId, {
+      await Axios.get("/api/users/" + props.match.params.userId + "/notes", {
         cancelToken: source.token
       }).then(response => {
         console.log(response);
@@ -63,7 +63,7 @@ function SinglePost(props) {
         <h1 style={{ textAlign: "center" }}>
           Welcome {singlePost.isLoaded.firstName}
         </h1>
-        <DisplayUserNotes />
+        <DisplayUserNotes userId={props.match.params.userId} />
       </div>
     );
   }

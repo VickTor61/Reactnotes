@@ -4,18 +4,17 @@ import DisplayNote from "../Notes/displayNotes/userNotes";
 
 import { useHistory } from "react-router";
 
-function DisplayUserNotes() {
+function DisplayUserNotes(props) {
   const History = useHistory();
 
   const [displayAllUserNotes, setAllUserNotes] = useState([]);
 
   useEffect(() => {
-    console.log(History);
     const source = Axios.CancelToken.source();
 
     async function fetchData() {
       try {
-        await Axios.get("/api/" + History.location.pathname + "/notes", {
+        await Axios.get("/api/users/" + props.userId + "/notes", {
           cancelToken: source.token
         }).then(response => {
           setAllUserNotes(response.data);
@@ -42,6 +41,7 @@ function DisplayUserNotes() {
               id={notes._id}
               title={notes.title}
               content={notes.content}
+              userId={props.userId}
             />
           </div>
         );

@@ -3,51 +3,49 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Edit from "../Edit/Edit";
 
+function FullNote(props) {
+  const [note, setNote] = useState([]);
+  // const History = useHistory();
 
+  /////// GET NOTE TO BE EDITED
 
-function FullNote() {
-
-const [note, setNote] = useState([]);
-const History = useHistory()
-
-/////// GET NOTE TO BE EDITED
-
-const NotesLocation = `${History.location.pathname}`;
-useEffect(() => {
-  const source = Axios.CancelToken.source();
-  async function fetchData() {
-    try {
-      await Axios.get(NotesLocation, {
-        cancelToken: source.token,
-      }).then((response) => {
-        setNote(response.data);
-      });
-    } catch (error) {
-      if (Axios.isCancel(error)) {
-      } else {
-        throw error;
+  // const NotesLocation = `${History.location.pathname}`;
+  useEffect(() => {
+    const source = Axios.CancelToken.source();
+    async function fetchData() {
+      try {
+        await Axios.get(
+          "/api/users/notes/" + props.match.params.noteId + "/edit",
+          {
+            cancelToken: source.token
+          }
+        ).then(response => {
+          console.log(response);
+          setNote(response.data);
+        });
+      } catch (error) {
+        if (Axios.isCancel(error)) {
+        } else {
+          throw error;
+        }
       }
     }
-  }
-  fetchData();
-  return () => {
-    source.cancel();
-  };
-}, [NotesLocation]);
+    fetchData();
+    return () => {
+      source.cancel();
+    };
+  }, []);
 
+  // function submit(e) {
+  //     e.preventDefault();
+  //     console.log(e)
+  // }
 
-
-// function submit(e) {
-//     e.preventDefault();
-//     console.log(e)
-// }
-
-
-    return (
-        <div>
-        <Edit title={note.title} content={note.content} variant={true} />
-        </div>
-    )
+  return (
+    <div>
+      <Edit title={note.title} content={note.content} variant={true} />
+    </div>
+  );
 }
 
 export default FullNote;
