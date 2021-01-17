@@ -8,7 +8,7 @@ import "./singlePost.css";
 function SinglePost(props) {
   const [singlePost, setSinglePost] = useState({
     loading: false,
-    isLoaded: null,
+    isLoaded: null
   });
 
   useEffect(() => {
@@ -16,12 +16,12 @@ function SinglePost(props) {
 
     async function fetchData() {
       try {
-        await Axios.get("/" + props.match.params.id, {
-          cancelToken: source.token,
-        }).then((response) => {
+        await Axios.get("/api" + props.match.params.id, {
+          cancelToken: source.token
+        }).then(response => {
           setSinglePost({
             loading: true,
-            isLoaded: response.data,
+            isLoaded: response.data
           });
         });
       } catch (error) {
@@ -42,17 +42,16 @@ function SinglePost(props) {
       <div className="loader__container">
         <div className="ids__ripple">
           <div> Loading</div>
-      
         </div>
       </div>
-    )
+    );
   } else if (singlePost.loading === true) {
     return (
-      <div className='FullPost'>
+      <div className="FullPost">
         <div>
           <ul>
             <li>
-              <Link to='/'>Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to={"/users/" + singlePost.isLoaded._id + "/notes"}>

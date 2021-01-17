@@ -10,13 +10,13 @@ function Users(props) {
 
   useEffect(() => {
     let isMounted = true;
-    Axios.get("/users")
-      .then((resp) => {
+    Axios.get("/api/users")
+      .then(resp => {
         if (isMounted) {
           setPosts(resp.data);
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
 
@@ -26,27 +26,27 @@ function Users(props) {
   });
 
   /////////////////////DELETE USER
-  const deleteUser = (id) => {
+  const deleteUser = id => {
     async function fetchData() {
-      const request = await Axios.delete("/users/" + id);
+      const request = await Axios.delete("/api/users/" + id);
       return request;
     }
     fetchData();
   };
 
   return (
-    <div className='user__wrapper'>
-      {postArray.map((data) => {
+    <div className="user__wrapper">
+      {postArray.map(data => {
         return (
-          <div className='paragraph' key={data._id}>
-            <div className='user__names'>
+          <div className="paragraph" key={data._id}>
+            <div className="user__names">
               <p>
                 {" "}
                 {data.firstName} {data.lastName}
               </p>
 
               <Link
-                className='home__link'
+                className="home__link"
                 to={"/users/" + data._id}
                 key={data._id}
               >
@@ -55,7 +55,7 @@ function Users(props) {
               </Link>
             </div>
             <button
-              className='user__btn'
+              className="user__btn"
               onClick={() => {
                 deleteUser(data._id);
               }}

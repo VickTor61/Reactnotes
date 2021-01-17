@@ -14,9 +14,9 @@ function DisplayUserNotes() {
 
     async function fetchData() {
       try {
-        await Axios.get(History.location.pathname + "/notes", {
-          cancelToken: source.token,
-        }).then((response) => {
+        await Axios.get(History.location.pathname + "/api/notes", {
+          cancelToken: source.token
+        }).then(response => {
           setAllUserNotes(response.data);
         });
       } catch (error) {
@@ -26,15 +26,15 @@ function DisplayUserNotes() {
         }
       }
     }
-    fetchData()
+    fetchData();
     return () => {
       source.cancel();
-    }
+    };
   });
 
   return (
-    <div className='Notes__container'>
-      {displayAllUserNotes.map((notes) => {
+    <div className="Notes__container">
+      {displayAllUserNotes.map(notes => {
         return (
           <div key={notes._id}>
             <DisplayNote
